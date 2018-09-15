@@ -1,18 +1,27 @@
 .page-header {
-    background: $off-white;
-    padding: $l-size 0;
-    margin-bottom: $l-size;
+  background: none;
+  padding: $l-size 0;
+  margin-bottom: $l-size;
 }
 
 .page-header__actions {
-    margin-top: $m-size;
-
+  margin-top: $m-size;
 }
 
 .page-header__title {
-    margin: 0;
-    font-weight: 300;
-    span {
-        font-weight: bold;
-    }
+  margin: 0;
+  padding-top: 2rem;
+  color: $off-white;
+  font-weight: 300;
+  span {
+    font-weight: bold;
+  }
+}
+
+.link-id {
+  padding-top: $s-size;
+}
+.link-id__content {
+  margin-left: 34rem;
+  color: white;
 }

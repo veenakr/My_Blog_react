@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
@@ -16,10 +17,16 @@ export class EditExpensePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="dashboard--edit">
         <div className="page-header">
           <div className="content-container">
             <h1 className="page-header__title">Edit post</h1>
+          </div>
+          <div className="link-id">
+            <Link target="_blank" className="link-id__content" to={`/edit/${this.props.expense.id}`}>
+              Post Readable at https://my-blog-app-react.herokuapp.com/edit/
+              {this.props.expense.id}
+            </Link>
           </div>
         </div>
         <div className="content-container">
