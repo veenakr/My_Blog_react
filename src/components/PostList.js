@@ -8,6 +8,7 @@ const PostList = props => (
     <div className="list-header">
       <div className="show-for-mobile">Posts</div>
       <div className="show-for-desktop">Posts</div>
+      <div className="show-for-desktop">Created On</div>
     </div>
     <div className="list-body">
       {props.posts.length === 0 ? (
