@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import selectExpenses from '../selectors/expenses';
-import selectExpensesTotal from '../selectors/expenses-total';
+import selectPosts from '../selectors/posts';
+import selectPostsTotal from '../selectors/Posts-total';
 import { Link } from 'react-router-dom';
 
-export const ExpensesSummary = () => {
+export const PostsSummary = () => {
   return (
     <div className="page-header">
       <div className="content-container">
@@ -19,12 +19,12 @@ export const ExpensesSummary = () => {
 };
 
 const mapStateToProps = state => {
-  const visibleExpenses = selectExpenses(state.expenses, state.filters);
+  const visiblePosts = selectPosts(state.posts, state.filters);
 
   return {
-    expenseCount: visibleExpenses.length,
-    expensesTotal: selectExpensesTotal(visibleExpenses)
+    postCount: visiblePosts.length,
+    postsTotal: selectPostsTotal(visiblePosts)
   };
 };
 
-export default connect(mapStateToProps)(ExpensesSummary);
+export default connect(mapStateToProps)(PostsSummary);

@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ExpenseForm from './ExpenseForm';
-import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import PostForm from './PostForm';
+import { startEditPost, startRemovePost } from '../actions/posts';
 
-export class EditExpensePage extends React.Component {
-  onSubmit = expense => {
-    this.props.startEditExpense(this.props.expense.id, expense);
+export class EditPostPage extends React.Component {
+  onSubmit = post => {
+    this.props.startEditPost(this.props.post.id, post);
     this.props.history.push('/');
   };
 
   onRemove = () => {
-    this.props.startRemoveExpense({ id: this.props.expense.id });
+    this.props.startRemovePost({ id: this.props.post.id });
     this.props.history.push('/');
   };
 
@@ -23,14 +23,14 @@ export class EditExpensePage extends React.Component {
             <h1 className="page-header__title">Edit post</h1>
           </div>
           <div className="link-id">
-            <Link target="_blank" className="link-id__content" to={`/edit/${this.props.expense.id}`}>
+            <Link target="_blank" className="link-id__content" to={`/edit/${this.props.post.id}`}>
               Post Readable at https://my-blog-app-react.herokuapp.com/edit/
-              {this.props.expense.id}
+              {this.props.post.id}
             </Link>
           </div>
         </div>
         <div className="content-container">
-          <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} />
+          <PostForm post={this.props.post} onSubmit={this.onSubmit} />
           <button className="button button--secondary" onClick={this.onRemove}>
             Remove Post
           </button>
@@ -42,16 +42,16 @@ export class EditExpensePage extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    expense: state.expenses.find(expense => expense.id === props.match.params.id)
+    post: state.posts.find(post => post.id === props.match.params.id)
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-  startEditExpense: (id, expense) => dispatch(startEditExpense(id, expense)),
-  startRemoveExpense: data => dispatch(startRemoveExpense(data))
+  startEditPost: (id, post) => dispatch(startEditPost(id, post)),
+  startRemovePost: data => dispatch(startRemovePost(data))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditExpensePage);
+)(EditPostPage);

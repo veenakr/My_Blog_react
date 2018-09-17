@@ -1,20 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';
-class ExpenseListFilters extends React.Component {
-  state = {
-    calendarFocused: null
-  };
+import { setTextFilter, sortByDate, sortByTitle } from '../actions/filters';
 
-  onDatesChange = ({ startDate, endDate }) => {
-    this.props.dispatch(setStartDate(startDate));
-    this.props.dispatch(setEndDate(endDate));
-  };
-
-  onFocusChange = calendarFocused => {
-    this.setState(() => ({ calendarFocused }));
-  };
-
+class PostListFilters extends React.Component {
   render() {
     return (
       <div className="content-container">
@@ -37,13 +25,13 @@ class ExpenseListFilters extends React.Component {
               onChange={e => {
                 if (e.target.value === 'date') {
                   this.props.dispatch(sortByDate());
-                } else if (e.target.value === 'amount') {
-                  this.props.dispatch(sortByAmount());
+                } else if (e.target.value === 'title') {
+                  this.props.dispatch(sortByTitle());
                 }
               }}
             >
               <option value="date">Date</option>
-              <option value="amount">Title</option>
+              <option value="title">Title</option>
             </select>
           </div>
         </div>
@@ -58,4 +46,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ExpenseListFilters);
+export default connect(mapStateToProps)(PostListFilters);

@@ -1,36 +1,36 @@
 import React from 'react';
 
-export default class ExpenseForm extends React.Component {
+export default class PostForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      description: props.expense ? props.expense.description : '',
-      note: props.expense ? props.expense.note : '',
+      title: props.post ? props.post.title : '',
+      body: props.post ? props.post.body : '',
       error: ''
     };
   }
 
-  onDescriptionChange = e => {
-    const description = e.target.value;
-    this.setState(() => ({ description }));
+  onTitleChange = e => {
+    const title = e.target.value;
+    this.setState(() => ({ title }));
   };
 
-  onNoteChange = e => {
-    const note = e.target.value;
-    this.setState(() => ({ note }));
+  onBodyChange = e => {
+    const body = e.target.value;
+    this.setState(() => ({ body }));
   };
 
   onSubmit = e => {
     e.preventDefault();
 
-    if (!this.state.description) {
+    if (!this.state.title) {
       this.setState(() => ({ error: 'Please enter Post Title' }));
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({
-        description: this.state.description,
-        note: this.state.note
+        title: this.state.title,
+        body: this.state.body
       });
     }
   };
@@ -44,11 +44,11 @@ export default class ExpenseForm extends React.Component {
           placeholder="Post Title"
           className="text-input"
           autoFocus
-          value={this.state.description}
-          onChange={this.onDescriptionChange}
+          value={this.state.title}
+          onChange={this.onTitleChange}
         />
 
-        <textarea className="textarea" placeholder="Post body" value={this.state.note} onChange={this.onNoteChange} />
+        <textarea className="textarea" placeholder="Post body" value={this.state.body} onChange={this.onBodyChange} />
 
         <div>
           <button className="button">Save Post</button>
